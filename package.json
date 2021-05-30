@@ -1,0 +1,24 @@
+{
+  "name": "ecomm",
+  "version": "1.0.0",
+  "description": "Refresh JavaScript skills and comfort level alongside Colt Steele's Modern JavaScript Bootcamp.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falondarville/ecomm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/falondarville/ecomm/issues"
+  },
+  "homepage": "https://github.com/falondarville/ecomm#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
