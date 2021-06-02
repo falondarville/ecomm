@@ -1,5 +1,5 @@
 const fs = require('fs');
-const crypo = require('crypto');
+const crypto = require('crypto');
 
 // checks for filename and creates a file if it does not exist in the dir that it's executed from
 class UsersRepository {
@@ -28,6 +28,8 @@ class UsersRepository {
         records.push(attrs);
         
         await this.writeAll(records);
+
+        return attrs;
     }
 
     async writeAll(records){
@@ -86,7 +88,7 @@ class UsersRepository {
     }
 
     randomId() {
-        // sere node.js documentation crypto section
+        // see node.js documentation crypto section
         return crypto.randomBytes(4).toString('hex');
     }
 }
