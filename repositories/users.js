@@ -1,5 +1,8 @@
 const fs = require('fs');
 const crypto = require('crypto');
+const util = require('util');
+
+const scrypt = util.promisify(crypto.scrypt);
 
 // checks for filename and creates a file if it does not exist in the dir that it's executed from
 class UsersRepository {
@@ -22,14 +25,24 @@ class UsersRepository {
     }
 
     async create(attrs) {
+        // attrs === { email: '', password: '' }
         attrs.id = this.randomId();
 
+        // generate unique salt for each new user
+        const salt = crypto.randomBytes(8).toString('hex');
+        const buf = await scrypt(attrs.password, salt, 64);
+
         const records = await this.getAll();
-        records.push(attrs);
+
+        const record = {
+            ...attrs,
+            password: `${buf.toString('hex')}.${salt}`
+        }
+        records.push(record);
         
         await this.writeAll(records);
 
-        return attrs;
+        return record;
     }
 
     async writeAll(records){

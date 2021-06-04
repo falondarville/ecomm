@@ -12,3 +12,4 @@ Note that the data store implementation is definitely not suitable for PROD. But
 
 ## Some Interesting Things
 * Express.js now has body parsing included so you no longer need to use the `body-parser` npm package. 
+* Node has its own Crypto [crypto.scrypt](https://nodejs.org/api/crypto.html#crypto_crypto_scryptsync_password_salt_keylen_options) functionality, which comes with salt as an argument (hash and salt in one!). No need to use bcrypt or other npm package. 
